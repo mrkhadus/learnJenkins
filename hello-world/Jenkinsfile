@@ -1,5 +1,8 @@
 pipeline{
-    agent none
+    // Node with label Slave1 will be used to execute the pipeline on
+    agent {
+        label "Slave1"
+    }
 
     stages{
         stage("Greet"){
