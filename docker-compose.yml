@@ -1,0 +1,16 @@
+version: '3'
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins:latest
+    ports:
+      - "8086:8080"
+    volumes:
+      - "$PWD/j_home:/var/jenkins_home"
+    user: root
+    networks:
+      - bridge
+
+
+networks:
+  bridge:
