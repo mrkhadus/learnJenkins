@@ -1,0 +1,22 @@
+pipeline{
+    agent any
+
+    stages {
+        stage("Greeting") {
+            steps {
+                script {
+                    // define name here or in jenkins evironments (Manage jenkins > system > Global Properties > Environment Variable > Add )
+                    def name = "Rushi"
+                    
+                    if(name == "Rushi")
+                        println("Hi $(name)")
+                    else
+                        println("Hi Human")
+
+                    sleep 2
+                    echo "End of the script, Now dig down deeper!!"
+                }
+            }
+        }
+    }
+}
