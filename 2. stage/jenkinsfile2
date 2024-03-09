@@ -1,0 +1,17 @@
+// pipeline with retry and timeout in stage
+pipeline{
+    agent any
+    stages {
+        stage("Build"){
+            steps{
+                retry(3){
+                    // if anything within this fails, it will retry for 3 times. if fails for 3 times, will throw error not only in first errorous attempt.
+                    echo "Before throwing error"
+                    echo "Error in retry"
+                }
+
+                echo "This runs after retry(3)"
+            }
+        }
+    }
+}
