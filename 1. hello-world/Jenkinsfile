@@ -1,0 +1,18 @@
+pipeline{
+    // Node with label Slave1 will be used to execute the pipeline on
+    agent {
+        node {
+            label "Slave1"
+            // by default executes in in /var/jenkins_home/workspace/hello-world , if we need to change it ==>
+            customworkspace "/home/ec2-user/customworkspace"
+        }
+    }
+
+    stages{
+        stage("Greet"){
+            steps{
+                echo "Hello World, I'm Learning Jenkins"
+            }
+        }
+    }
+}
