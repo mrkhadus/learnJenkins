@@ -10,6 +10,10 @@ pipeline{
                     echo "Error in retry"
                 }
 
+                timeout(time: 2, unit: 'SECONDS') // DAYS, HOURS, MICROSECONDS, MILLISECONDS, MINUTES, NANOSECONDS, SECONDS
+                {
+                    sleep 5
+                }
                 echo "This runs after retry(3)"
             }
         }
