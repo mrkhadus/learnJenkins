@@ -1,0 +1,18 @@
+// Add tools from: Manage Jenkins > Tools > Maven > Add
+pipeline{
+    agent any
+    stages{
+        stage("Print Maven Version"){
+            tools{
+                // The name maven3_5_2 is set in the step where we add the maven tool: Manage Jenkins > Tools > Maven > Add
+                maven 'maven3_5_2'
+            }
+            steps{
+                echo "executing maven command from pipeline"
+                echo "Maven is installed on the server"
+
+                sh 'mvn --version'
+            }
+        }
+    }
+}
