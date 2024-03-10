@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+    stages {
+        stage( 'Build' ) {
+            steps {
+                echo "Here we are nesting timeout into the retry block"
+                retry(3) {
+                    timeout(time: 2, unit: SECONDS)
+                    {
+                        sleep 3
+                    }
+                }
+            }
+        }
+    }
+}
