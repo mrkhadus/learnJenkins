@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages{
+        stage('Build'){
+            options{
+                retry(3)
+            }
+            // if retry is defined in the options tag,
+            // Whole step block will be executed again, if any error takes place anywhere.
+            // where as if retry is defined in the steps block then only that specific code will be retried.
+            //
+            // In the options block we can define parameters like:
+            // max: 3 specifies that the block of code should be retried a maximum of 3 times.
+            // interval: 1 specifies the delay between retry attempts (in seconds).
+            // failures: [ErrorA, ErrorB] specifies specific errors (ErrorA and ErrorB) that should trigger a retry.
+            steps{
+                echo "This is executed before error"
+                error "This is where error gets thrown"
+                echo  "This is executed after error, which will not be printed."
+            }
+        }
+    }
+}
