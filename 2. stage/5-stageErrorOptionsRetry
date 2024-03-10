@@ -14,11 +14,14 @@ pipeline {
             // max: 3 specifies that the block of code should be retried a maximum of 3 times.
             // interval: 1 specifies the delay between retry attempts (in seconds).
             // failures: [ErrorA, ErrorB] specifies specific errors (ErrorA and ErrorB) that should trigger a retry.
+            
+            // BUT if whole build/ STAGE fails then, no retry takes place.
             steps{
                 echo "This is executed before error"
                 error "This is where error gets thrown"
                 echo  "This is executed after error, which will not be printed."
             }
         }
-    }
+
+}
 }
