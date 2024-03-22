@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+    
+    stages{
+        stage('Build') {
+            steps{
+                // we can use the timestamps block for specific chunck of code, 
+                // we cannot use timestamps at the pipeline level, we have to use it within the stage only.
+                timestamps{
+                    echo "Hello world from Build"
+                    echo "Hello World from build again"
+                }
+            }
+        }
+        stage('Test'){
+            steps{
+                echo "Hello world from Test"
+                echo "Hello world from Test again."
+            }
+        }
+    }
+}
