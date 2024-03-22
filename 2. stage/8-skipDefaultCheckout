@@ -10,6 +10,7 @@ pipeline{
             options{
                 skipDefaultCheckout()
             }
+            // we need this jenkins file to be stored in github with other files in order to let the jenkins to clone in agent. 
             steps{
                 echo "Hello World"
             }
