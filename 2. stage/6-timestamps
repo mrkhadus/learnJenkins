@@ -1,10 +1,16 @@
 pipeline{
     agent any
 
+    // Timestamps in pipeline level
+    options {
+        timestamps()
+    }
+
     stages{
         stage('Build'){
             options{
                 timestamps()
+                // Here it is defined at the stage level if defined in the pipeline level, every output will have timestamp before the actual content.
             }
             steps{
                 echo "Hello World in build"
