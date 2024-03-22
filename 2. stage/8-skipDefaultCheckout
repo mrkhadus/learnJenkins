@@ -1,0 +1,18 @@
+
+pipeline{
+    agent none
+
+    stages{
+        stage('Build'){
+            agent any
+            // This will not clone the repo to the directory in that specific/defined agent on which job runs.
+            // Skip checking out code from source control by default in the agent directive. // 
+            options{
+                skipDefaultCheckout()
+            }
+            steps{
+                echo "Hello World"
+            }
+        }
+    }
+}
