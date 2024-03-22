@@ -11,11 +11,21 @@ pipeline{
                 echo "Hello World in Build again"
             }
         }
+        // OUTPUT:
+        // [Pipeline] echo
+        // 06:23:47  Hello World in build
+        // [Pipeline] echo
+        // 06:23:47  Hello World in Build again
         stage('Test') {
             steps{
                 echo "Hello world from test"
                 echo "Hello World from test again"
             }
         }
+        // OutPut: 
+        // [Pipeline] echo (hide)
+        // Hello world from test
+        // [Pipeline] echo
+        // Hello World from test again
     }
 }
