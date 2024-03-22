@@ -1,0 +1,29 @@
+pipeline{
+    agent any
+    environment{
+        fname = "Rushi"
+        lname = "Dherange"        
+    }
+    stages{
+        stage('Build'){
+            environment{
+                place = "Pune"                
+            }
+            steps{
+                echo "First Name is ${fname}"
+                echo "Last Name is ${lname}"
+                echo "He stays in ${place}"   
+                // Print all the environment variables 
+                sh 'printenv'   
+            }
+        }
+        stage('Test'){
+            steps{
+                echo "First Name is ${fname}"
+                echo "Last Name is ${lname}"
+                // If below line is uncommented then pipeline will thorw an error, because variable place is defined in the 'Build' stage and others are defined Globally.
+                // echo "He stays in ${place}"       
+            }            
+        }
+    }
+}
