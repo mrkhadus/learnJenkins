@@ -2,9 +2,9 @@ pipeline{
     agent any
 
     // Timestamps in pipeline level
-    options {
-        timestamps()
-    }
+    // options {
+    //     timestamps()
+    // }
 
     stages{
         stage('Build'){
