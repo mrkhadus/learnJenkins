@@ -1,0 +1,21 @@
+pipeline{
+    agent any
+
+    stages{
+        stage('Build'){
+            options{
+                timestamps()
+            }
+            steps{
+                echo "Hello World in build"
+                echo "Hello World in Build again"
+            }
+        }
+        stage('Test') {
+            steps{
+                echo "Hello world from test"
+                echo "Hello World from test again"
+            }
+        }
+    }
+}
