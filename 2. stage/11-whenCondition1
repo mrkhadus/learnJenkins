@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+    environment{
+        DEPLOY_TO="Production"
+    }
+    stages {
+        stage('ProdBuild') {
+            when {
+                environment name: 'DEPLOY_TO', value: 'Production'
+            }            
+            steps {
+                echo 'Deploying to prod'
+            }
+        }
+        // This stage will be skipped as the  "when" condition is not met [Env variable DEPLOY_TO is defined as Production].
+        stage('DevBuild') {
+            when {
+                environment name: 'DEPLOY_TO', value: 'Development'
+            }
+            steps {
+                echo 'Deploying to Dev'
+            }
+        }
+    }
+}
