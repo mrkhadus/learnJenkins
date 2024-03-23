@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    environment {
+        Name = 'Rushi'
+    }
+    stages {
+        stage('Build') {
+            // Checks for the condition where it checks expected and actual values and based on the result executes the following commands. 
+            when{
+                equals expected: 'Rushi', actual: Name
+            }
+            steps{
+                echo "Hello ${Name}"
+            }
+        }
+    }
+}
