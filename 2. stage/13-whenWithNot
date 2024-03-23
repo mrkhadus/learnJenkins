@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    environment {
+        Name="Rishi"
+    }
+    stages {
+        stage('Build') {
+            when {
+                    // When != (Not equals to) logic will be applied here.
+                    not {
+                        equals expected: 'Rushi', actual: Name
+                    }
+            }
+            steps {
+                echo "Name is ${Name}"
+            }
+        }
+    }
+}
