@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    environment {
+        version = "1.0.0"
+    }
+    stages {
+        stage('Build') {
+            when {
+                // expression where it will check if the value of variable version is equal to 1.0.0, 
+                // If yes then it will run, else will be skipped.
+                    expression {
+                        version == "1.0.0"
+                    }
+                }
+            steps {
+                echo "Building $version"
+            }
+        }
+    }
+}
