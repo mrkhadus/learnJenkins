@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+
+    environment{
+        Version= "1.0.0"
+        // Do not use Env Keyword as it is pre-defined to something in Jenkins.
+        // envi= "Dev" 
+        envi= "Prod"
+    }
+
+    stages {
+        stage('Build') {
+            when {
+                // anyOf: If any of the variables defined above matches the expression within this block, it will run the stage.
+                // Here only the variable Version matches as defined above, still this stage will be executed. 
+                anyOf {
+                    environment name: "Version", value: "1.0.0"
+                    environment name: "envi", value: "Dev"
+                }
+            }
+            steps {
+                echo "Building version: $Version in $envi  Environment."
+            }
+        }
+    }
+}
