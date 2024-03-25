@@ -1,0 +1,27 @@
+// Store this file in  the root directory of your project, in any of the Master or dev branch.
+pipeline {
+    agent any
+
+    stages {
+        stage('Build Prod') {
+            // If this pipeline file is stored/ Pushed to master branch then this stage will be executed,
+            // Else- Skipped
+            when {
+                branch 'master'
+            }
+            steps {
+                echo "Building for production"
+            }
+        }
+        stage('Build Dev') {
+            // If this pipeline file is stored/ Pushed to dev branch then this stage will be executed,
+            // Else- Skipped
+            when {
+                branch 'dev'
+            }
+            steps {
+                echo 'Building for Development'
+            }
+        }
+    }
+}
