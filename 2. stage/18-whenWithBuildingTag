@@ -1,0 +1,20 @@
+// Store in github repo
+// Create a multi branch job in jenkins
+// define the jenkins file for pipeline through SCM (Git)
+// execute on Local before pushing code(This file) to Github==> `git tag 1.0`
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            // Only if the tag is defined as per the above method. Only then this stage will be executed.
+            // Else Skipped...
+            when {
+                buildingTag()
+            }
+
+            steps{
+                echo "Hello  World, Building Tag"
+            }
+        }
+    }
+}
