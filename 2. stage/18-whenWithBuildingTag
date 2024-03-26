@@ -2,6 +2,7 @@
 // Create a multi branch job in jenkins
 // define the jenkins file for pipeline through SCM (Git)
 // execute on Local before pushing code(This file) to Github==> `git tag 1.0`
+// git push --tags
 pipeline {
     agent any
     stages {
@@ -10,6 +11,11 @@ pipeline {
             // Else Skipped...
             when {
                 buildingTag()
+                // OR
+                // tag "1.0"
+                // OR
+                // tag "release-*"   // Add tag to github repo ==> git tag release-to-prod
+                // Build will be created for that specific  Tag only.. Different tag defined in pipeline, will be skipped.
             }
 
             steps{
