@@ -1,0 +1,20 @@
+// Will be executed on the pull request of github
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            when {
+                // Separate PR section will be visible and build will be executed on that PR(Pull Request Section) and not on the Master branch of the github in jenkins.
+                changeRequest ()
+                // Only execute when the title of PR is 'when-pr'
+                // changeRequest title:"when-pr"
+
+                // Can also apply various other conditions, i.e on fork, pull, etc. Refer Documentation. 
+            }
+            steps {
+                echo 'Building on Change Request Condition.....'
+            }
+        }
+    }
+}
