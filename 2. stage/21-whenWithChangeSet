@@ -1,0 +1,17 @@
+// Pipeline where, some stage should only execute when it has commit for a specific file. 
+// eg I have made changes to the .js files and pushed to github. 
+// only then the stage should be executed, here's how.
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            when {
+                changeset glob: "*.js"
+            }
+
+            steps {
+                echo "Hello, Building as you made changes to .js files"
+            }
+        }
+    }
+}
