@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            when {
+                // Ony when this text is used/present in the commit message then only this stage will be executed, else skipped.
+                changelog 'some_text'
+            }
+            steps {
+                echo 'Building with Changelog Condition.....'
+            }
+        }
+    }
+}
