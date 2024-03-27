@@ -1,0 +1,30 @@
+// POST can appear at the end of the stage or at the end of the pipeline
+// LINK: https://www.jenkins.io/doc/book/pipeline/syntax/#post
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo "Building..."
+                // error ("Build Failed")
+            }
+        }
+    }
+    post {
+        // There is the level through which the status is considered, like always has top level then changes > Refer the documentation in the link on line2
+
+        // runs only if the stage above has status "success"
+        success{
+            echo  "POST> Success is called"
+        } 
+
+        // Runs only if the stage has "failure" as the status
+        failure {
+            echo "POST> Failure is called"
+        }
+         // Runs regardless of the pipelines/ Stage's run
+        always {
+            echo 'POST> always is called'
+        }
+    }
+}
