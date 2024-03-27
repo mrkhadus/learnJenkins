@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo "Building..."
+                script {
+                    currentBuild.result = 'UNSTABLE'
+                }
+            }
+        }
+    }
+    post {
+        // runs only if the current pipeline's/stage's run has a different completion status from it's previous run.
+        changed {
+            echo "POST > changed is called..."
+        }
+    }
+}
