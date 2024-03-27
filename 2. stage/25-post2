@@ -16,5 +16,12 @@ pipeline {
         changed {
             echo "POST > changed is called..."
         }
+
+        //REGRESSION: runs only if previous builds was successfull and current build is failed/unstable/Aborted..
+        //FIXED: Runs when previous builds were failed and current runs successfully.
+        //ABORTED: Runs only when the current build is aborted
+        // ...
+        // ...
+        // LINK: https://www.jenkins.io/doc/book/pipeline/syntax/#post ==> Checkout for more
     }
 }
