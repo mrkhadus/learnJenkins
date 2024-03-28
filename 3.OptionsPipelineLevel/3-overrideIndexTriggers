@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    options {
+        timestamps()
+        // overrideIndexTriggers is used to trigger builds or skip on specific branches only, Like trigger for dev branch commits only and not for others.
+        //overrideIndexTriggers(true) == > is alsoa default behaviour if we specify nothing pipeline will still be triggered. 
+        // overrideIndexTriggers(false) ==> even if the commits are made to this branch, pipeline will skip the build for this branch.
+
+        // overrideIndexTriggers(true)
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo "Hello World!!"
+            }
+        }
+    }
+}
