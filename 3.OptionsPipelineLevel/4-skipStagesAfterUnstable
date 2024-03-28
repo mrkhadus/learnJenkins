@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    options {
+        // will skip the stages after the one which becomes unstable
+        skipStagesAfterUnstable()
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo "Building"
+                script {
+                    currentBuild.result = 'UNSTABLE'
+                }
+            }
+        }
+        stage('Deploy'){
+            steps {
+                echo "Deploying...."
+            }
+        }
+    }
+}
