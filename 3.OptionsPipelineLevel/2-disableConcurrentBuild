@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    options {
+        // This will not allow us to run the pipeline concurrently (i.e. one pipeline running multiple times.) 
+        // Eg. Pressing 'Build Now' multiple times will trigger the pipeline to run and multiple times the pipeline will be invoked and run.
+
+        // With this options the pipeline will run only one at a time.
+        // If triggered multiple times ==> (pending—Build #6 is already in progress (ETA: 6.6 sec))  
+        // i.e Will wait for the previous pipeline to complete the execution.
+        disableConcurrentBuilds()
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                sleep(time: 10, unit: 'SECONDS')
+                echo 'Hello World!!'
+            }
+        }
+    }
+}
