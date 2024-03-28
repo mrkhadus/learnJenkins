@@ -1,0 +1,18 @@
+// BUILDDISCARDER:: Here in the example we have specified the numToKeepStr as '1' and so only one build will be preserved.
+// If we click on last second build or any before the current build ==> Will give 404 error as it will be deleted and jenkins cannot find that.
+pipeline {
+    agent any
+    options {
+        // LINK: https://plugins.jenkins.io/build-discarder/
+
+        buildDiscarder(logRotator(numToKeepStr: '1'))
+        // The parameter 'numToKeepStr' is to define how many build we want to store in jenkins, If '1' only one build will be stored and last second will be deleted
+    }
+    stages {
+        stage('Build') {
+            steps{
+                echo "Hello World"
+            }
+        }
+    }
+}
