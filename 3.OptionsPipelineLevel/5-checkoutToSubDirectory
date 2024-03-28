@@ -1,0 +1,20 @@
+// have this pipeline code in the github repository with other code file, every file will be checked out to the sub directroy defined in the options.
+
+pipeline {
+    agent any
+
+    options {
+        // sub directory with the name someSubDir will be created and the github repo will be checked out to that sub directory on the jenkins agent.
+        checkoutToSubDirectory('someSubDir')
+    }
+
+    stages {
+        stage('Build') {
+            stage {
+                steps {
+                    echo "Building..."
+                }
+            }
+        }
+    }
+}
